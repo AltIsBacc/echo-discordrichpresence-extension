@@ -1,0 +1,44 @@
+plugins {
+    alias(libs.plugins.shadow)
+    id("java-library")
+    alias(libs.plugins.kotlin.jvm)
+    id("maven-publish")
+    id("ext-convention")
+}
+
+// Change "MyExtension" to your extension's class name.
+val meta = extensionMetadata(extClassName = "MyExtensionDesktop")
+
+dependencies {
+    implementation(project(":common"))
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            groupId    = "dev.brahmkshatriya.echo.extension"
+            artifactId = meta.id
+            version    = meta.verName
+            from(components["java"])
+        }
+    }
+}
+
+tasks.shadowJar {
+    archiveBaseName.set(meta.id)
+    archiveVersion.set(meta.verName)
+
+    manifest {
+        attributes(
+            mapOf(
+                "Extension-Id"           to meta.id,
+                "Extension-Type"         to meta.type,
+                "Extension-Class"        to meta.className,
+                "Extension-Version-Code" to meta.verCode,
+                "Extension-Version-Name" to meta.verName,
+                "Extension-Name"         to meta.name,
+                "Extension-Author"       to meta.author,
+            )
+        )
+    }
+}

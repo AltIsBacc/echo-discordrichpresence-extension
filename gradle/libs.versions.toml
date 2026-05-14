@@ -1,0 +1,17 @@
+[versions]
+kotlin          = "2.2.10"
+android         = "8.12.1"
+shadow          = "9.4.1"
+echoCommon      = "1.0"
+
+[libraries]
+echo-common           = { module = "dev.brahmkshatriya.echo:common", version.ref = "echoCommon" }
+kotlin-stdlib         = { module = "org.jetbrains.kotlin:kotlin-stdlib" }
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "android" }
+kotlin-gradle-plugin  = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "android" }
+android-library     = { id = "com.android.library",     version.ref = "android" }
+kotlin-jvm          = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+shadow              = { id = "com.gradleup.shadow",       version.ref = "shadow" }
