@@ -12,6 +12,6 @@
         }
     },
     "containerEnv": {
-        "_JAVA_OPTIONS": "-XX:+UnlockExperimentalVMOptions -XX:+UseCompactObjectHeaders -XX:+TieredCompilation"
+        "_JAVA_OPTIONS": "-XX:+UnlockExperimentalVMOptions -XX:+TieredCompilation"
     }
 }
